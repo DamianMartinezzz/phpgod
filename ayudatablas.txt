@@ -1,2 +1,0 @@
-<tr> = FILAS!
-<td> = COLUMNAS!
