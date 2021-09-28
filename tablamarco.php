@@ -7,7 +7,7 @@
 		<tr>
 		<?php for ($col=1;$col<=$cant_col;$col++) { ?>
 		<?php 
-		if (($col == 1 || $filas == 1) && ($col = $cant_col || $filas = $cant_filas)){
+		if (($col == 1 || $filas == 1) || ($col == $cant_col || $filas == $cant_filas)){
 			$color = $_GET['mcolor'];
 		} else {
 			$color = "white";
