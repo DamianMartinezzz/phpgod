@@ -1,0 +1,49 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    
+    </style>
+    <script>
+        function printfromapi(tabla){
+            $.ajax({
+				url:"controlador.php?tabla="+tabla+"&pagina=4",
+				type:'GET',
+				dataType:"json",
+				success: function(result){
+					s = "<table border='1'>"
+					$.each(result[0], function(index, valor){
+					s+= "<th>" + index + "</th>";
+					});
+					
+					for(x=0;x<result.length;x++){
+					s+= "<tr>";
+					$.each(result[x], function(index, valor){
+					s+= "<td>" + valor + "</td>";
+					});
+					s += "</tr>";
+					
+					
+					}
+					
+					s += "</table>"
+					$("#row").html(s);
+				}
+			});
+        }
+    </script>
+</head>
+<body>
+    <button onclick="printfromapi('offices');">Offices</button> 
+    <button onclick="printfromapi('orders');">Orders</button>
+    <div id="row"></div>
+
+
+
+</body>
+</html>
